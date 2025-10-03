@@ -59,15 +59,14 @@ class Calendario : Fragment() {
         button.setOnClickListener {
             val formato = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
             val inicioTexto = horaInicio.text.toString()
-            //val finTexto = horaFin.text.toString()
             val inicioMillis = try { formato.parse(inicioTexto)?.time } catch (e: Exception) { null }
-           // val finMillis = try { formato.parse(finTexto)?.time } catch (e: Exception) { null }
+
             val intent = Intent(Intent.ACTION_INSERT).apply {
                 data = CalendarContract.Events.CONTENT_URI
                 putExtra(CalendarContract.Events.TITLE, titulo.text.toString())
                 putExtra(CalendarContract.Events.EVENT_LOCATION, ubicacion.text.toString())
                 putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, inicioMillis ?: System.currentTimeMillis())
-                // putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finMillis ?: (inicioMillis ?: System.currentTimeMillis()) + 60*60*1000)
+                putExtra(CalendarContract.Events.DESCRIPTION, finMillis ?: (inicioMillis ?: System.currentTimeMillis()) + 60*60*1000)
             }
             startActivity(intent)
 
