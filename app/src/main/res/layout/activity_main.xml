@@ -10,7 +10,10 @@
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fragmentContainerView">
+        android:id="@+id/fragmentContainerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.fragment.app.FragmentContainerView>
 

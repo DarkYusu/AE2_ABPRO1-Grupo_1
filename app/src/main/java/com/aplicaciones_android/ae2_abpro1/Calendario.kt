@@ -54,20 +54,20 @@ class Calendario : Fragment() {
         val titulo = view.findViewById<EditText>(R.id.inputTitulo)
         val ubicacion = view.findViewById<EditText>(R.id.inputLugar)
         val horaInicio = view.findViewById<EditText>(R.id.inputFechaHora)
-        val horaFin = view.findViewById<EditText>(R.id.inputHoraFin)
+        // val horaFin = view.findViewById<EditText>(R.id.inputHoraFin)
 
         button.setOnClickListener {
             val formato = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
             val inicioTexto = horaInicio.text.toString()
-            val finTexto = horaFin.text.toString()
+            //val finTexto = horaFin.text.toString()
             val inicioMillis = try { formato.parse(inicioTexto)?.time } catch (e: Exception) { null }
-            val finMillis = try { formato.parse(finTexto)?.time } catch (e: Exception) { null }
+           // val finMillis = try { formato.parse(finTexto)?.time } catch (e: Exception) { null }
             val intent = Intent(Intent.ACTION_INSERT).apply {
                 data = CalendarContract.Events.CONTENT_URI
                 putExtra(CalendarContract.Events.TITLE, titulo.text.toString())
                 putExtra(CalendarContract.Events.EVENT_LOCATION, ubicacion.text.toString())
                 putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, inicioMillis ?: System.currentTimeMillis())
-                putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finMillis ?: (inicioMillis ?: System.currentTimeMillis()) + 60*60*1000)
+                // putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finMillis ?: (inicioMillis ?: System.currentTimeMillis()) + 60*60*1000)
             }
             startActivity(intent)
 

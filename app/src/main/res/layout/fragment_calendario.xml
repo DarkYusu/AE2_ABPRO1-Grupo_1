@@ -29,14 +29,16 @@
             android:id="@+id/inputFechaHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Fecha y hora de inicio (ej: 2025-10-03 15:00)"
+            android:hint="Fecha y hora de recordatorio
+
+            (ej: 2025-10-03 15:00)"
             android:layout_marginBottom="16dp"/>
 
         <EditText
-            android:id="@+id/inputHoraFin"
+            android:id="@+id/descripcionEvento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Fecha y hora de fin (ej: 2025-10-03 16:00)"
+            android:hint="Descripción del evento"
             android:layout_marginBottom="24dp"/>
 
         <Button
