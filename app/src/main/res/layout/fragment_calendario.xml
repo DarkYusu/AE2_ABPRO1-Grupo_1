@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Calendario">
 
-
-    <Button
-        android:id="@+id/boton_calendario"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:orientation="vertical"
+        android:padding="24dp">
 
-</FrameLayout>
+        <EditText
+            android:id="@+id/inputTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título del evento"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/inputLugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lugar del evento"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/inputFechaHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha y hora de inicio (ej: 2025-10-03 15:00)"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/inputHoraFin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha y hora de fin (ej: 2025-10-03 16:00)"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/boton_calendario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crear evento en calendario"/>
+
+    </LinearLayout>
+</ScrollView>

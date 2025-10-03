@@ -8,6 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,13 +51,23 @@ class Calendario : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<Button>(R.id.boton_calendario)
+        val titulo = view.findViewById<EditText>(R.id.inputTitulo)
+        val ubicacion = view.findViewById<EditText>(R.id.inputLugar)
+        val horaInicio = view.findViewById<EditText>(R.id.inputFechaHora)
+        val horaFin = view.findViewById<EditText>(R.id.inputHoraFin)
+
         button.setOnClickListener {
+            val formato = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+            val inicioTexto = horaInicio.text.toString()
+            val finTexto = horaFin.text.toString()
+            val inicioMillis = try { formato.parse(inicioTexto)?.time } catch (e: Exception) { null }
+            val finMillis = try { formato.parse(finTexto)?.time } catch (e: Exception) { null }
             val intent = Intent(Intent.ACTION_INSERT).apply {
                 data = CalendarContract.Events.CONTENT_URI
-                putExtra(CalendarContract.Events.TITLE, "Reunión importante")
-                putExtra(CalendarContract.Events.EVENT_LOCATION, "Oficina")
-                putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, System.currentTimeMillis() + 60*60*1000)
-                putExtra(CalendarContract.EXTRA_EVENT_END_TIME, System.currentTimeMillis() + 2*60*60*1000)
+                putExtra(CalendarContract.Events.TITLE, titulo.text.toString())
+                putExtra(CalendarContract.Events.EVENT_LOCATION, ubicacion.text.toString())
+                putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, inicioMillis ?: System.currentTimeMillis())
+                putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finMillis ?: (inicioMillis ?: System.currentTimeMillis()) + 60*60*1000)
             }
             startActivity(intent)
 
