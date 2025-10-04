@@ -344,7 +344,6 @@ class Calendario : Fragment() {
     }
 
     private fun scheduleNotifications(eventId: Long, inicioMillis: Long, title: String) {
-        // incluir 0 para notificación al inicio del evento
         val minutesList = listOf(60, 30, 10, 0)
         val now = System.currentTimeMillis()
         val am = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -353,7 +352,7 @@ class Calendario : Fragment() {
             val triggerAt = inicioMillis - minutes * 60_000L
             if (triggerAt <= now) {
                 Log.d(TAG, "Skipping scheduling for $minutes min before: triggerAt in past: ${Date(triggerAt)}")
-                continue // no programar alarmas en el pasado
+                continue
             }
 
             val intent = Intent(requireContext(), NotificationReceiver::class.java).apply {
@@ -367,11 +366,7 @@ class Calendario : Fragment() {
             val pi = PendingIntent.getBroadcast(requireContext(), requestCode, intent, flags)
 
             Log.d(TAG, "Scheduling alarm: eventId=$eventId minutesBefore=$minutes triggerAt=${Date(triggerAt)} requestCode=$requestCode")
-            try {
-                am.set(AlarmManager.RTC_WAKEUP, triggerAt, pi)
-            } catch (e: Exception) {
-                Log.d(TAG, "Failed to schedule alarm for requestCode=$requestCode: ${e.message}")
-            }
+            am.set(AlarmManager.RTC_WAKEUP, triggerAt, pi)
         }
     }
 
