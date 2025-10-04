@@ -16,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/titulo"
+            android:inputType="textPersonName"
+            android:autofillHints="name"
             android:layout_marginBottom="16dp"/>
 
         <EditText
@@ -23,13 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/lugar"
-            android:layout_marginBottom="16dp"/>
-
-        <EditText
-            android:id="@+id/inputFechaHora"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/fecha_y_hora"
+            android:inputType="textPostalAddress"
+            android:autofillHints="postalAddress"
             android:layout_marginBottom="16dp"/>
 
         <EditText
@@ -37,7 +34,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/descripcion"
+            android:inputType="textMultiLine"
+            android:importantForAutofill="no"
             android:layout_marginBottom="24dp"/>
+
+        <EditText
+            android:id="@+id/inputFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/fecha"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="true"
+            android:inputType="none"
+            android:importantForAutofill="no"
+            android:cursorVisible="false"
+            android:longClickable="false"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/inputHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hora"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="true"
+            android:inputType="none"
+            android:importantForAutofill="no"
+            android:cursorVisible="false"
+            android:longClickable="false"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Botón de prueba para notificaciones -->
+        <Button
+            android:id="@+id/btn_test_notif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/btn_test_notif" />
 
         <Button
             android:id="@+id/boton_calendario"

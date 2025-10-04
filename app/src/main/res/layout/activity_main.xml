@@ -7,14 +7,41 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/navBar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/fragmentContainerView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.fragment.app.FragmentContainerView>
+        <Button
+            android:id="@+id/btnIngresar"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/nav_ingresar" />
+
+        <Button
+            android:id="@+id/btnRecordatorios"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/nav_recordatorios" />
+
+    </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/fragmentContainerView"
+        app:layout_constraintTop_toBottomOf="@id/navBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
